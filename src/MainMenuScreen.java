@@ -1,4 +1,4 @@
- 
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
@@ -37,6 +37,7 @@ public class MainMenuScreen implements Screen {
         shape = new ShapeRenderer();
         shape.setColor(Color.GREEN);
         startBounds = new Rectangle(145, 205, 315, 60);
+
     }
 
     @Override
@@ -54,7 +55,7 @@ public class MainMenuScreen implements Screen {
         shape.begin(ShapeRenderer.ShapeType.Line);
         shape.rect(startBounds.x, startBounds.y, startBounds.width, startBounds.height);
         shape.end();
-        
+
         update();
 
     }

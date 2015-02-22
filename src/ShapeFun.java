@@ -32,9 +32,7 @@ public class ShapeFun extends Game {
         setScreen(menuScreen);
         input = new InputHandler();
         Gdx.input.setInputProcessor(input);
-        
         AssetLoader.load();
-
     }
 
     @Override
@@ -42,5 +40,6 @@ public class ShapeFun extends Game {
         super.render();
         fps.log();
         input.update();
+        
     }
 }

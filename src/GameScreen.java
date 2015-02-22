@@ -63,6 +63,7 @@ public class GameScreen implements Screen {
         shape.setColor(Color.BLACK);
         obst[0].setParameters(400, groundLevel, 50, 60, 300);
 
+        AssetLoader.load();
 
     }
 
@@ -132,7 +133,7 @@ public class GameScreen implements Screen {
         }
 
         if (checkCollision()) {
-            AssetLoader.hurt.play();
+            AssetLoader.jump1.play();
             GameState = GAME_OVER;
             
         }
