@@ -132,7 +132,9 @@ public class GameScreen implements Screen {
         }
 
         if (checkCollision()) {
+            AssetLoader.jump1.play();
             GameState = GAME_OVER;
+            
         }
     }
 

@@ -20,6 +20,7 @@ public class ShapeFun extends Game {
     int DEVICE_HEIGHT;
     public InputHandler input;
     boolean debug = true;
+    AssetLoader manager;
     
     
 
