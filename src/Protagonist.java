@@ -34,17 +34,19 @@ public class Protagonist {
 
     }
 
+    //all input happens here
     public void update(float deltaTime) {
         if (game.input.keyPressed == Keys.SPACE && velocity == 0) {
             jump();
             System.out.println("Jump aru");
-        }
+        } //end keyPressed = keys.space
         calculatePhysics(deltaTime);
         System.out.println("velocity = " + velocity + "");
         bounds.x = position.x;
         bounds.y = position.y;
 
-    }
+    }//end update
+    
 
     public void jump() {
         if (velocity == 0) {
@@ -56,7 +58,7 @@ public class Protagonist {
             velocity = 10;
         }
 
-    }
+    } //end jump
 
     public void crouch() {
     }
@@ -68,50 +70,50 @@ public class Protagonist {
         if (velocity >= maxVelocity) {
             acceleration.y = 0;
             velocity = maxVelocity;
-        }
+        } //end velocity >= maxVelocity
         position.y += velocity;
 
         if (position.y < groundLevel) {
             position.y = groundLevel;
             setZeros();
-        }
+        } //end if position.y < groundLevel
 
 
 
-    }
+    } //end calculate physics
 
     private void setZeros() {
         acceleration.y = 0;
         velocity = 0;
-    }
+    } //end setZeros
 
     public ShapeFun getGame() {
         return game;
-    }
+    } //end getGame
 
     public void setGame(ShapeFun game) {
         this.game = game;
-    }
+    } //end setGame
 
     public Rectangle getBounds() {
         return bounds;
-    }
+    } //end getBounds
 
     public void setBounds(Rectangle bounds) {
         this.bounds = bounds;
-    }
+    } //setBounds
 
     public float getVelocity() {
         return velocity;
-    }
+    } //end getVelocity
 
     public void setVelocity(float velocity) {
         this.velocity = velocity;
-    }
+    } //end setVelocity
 
     public Vector2 getAcceleration() {
         return acceleration;
-    }
+    } //end getAcceleration
 
     public void setAcceleration(Vector2 acceleration) {
         this.acceleration = acceleration;

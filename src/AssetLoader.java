@@ -1,6 +1,4 @@
 
-import com.badlogic.gdx.Audio;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Sound;
 
@@ -20,25 +18,25 @@ public class AssetLoader {
     public AssetLoader() {
     }
 
-    public void load() {
+    public static void load() {
         manager.load("data/sfx/Jump.wav", Sound.class);
-        manager.load("data/sfx/Jump2.wav", Sound.class);
-        manager.load("data/sfx/Jump3.wav", Sound.class);
-        manager.load("data/sfx/Hit_Hurt.wav", Sound.class);
+        manager.load("/data/sfx/Jump2.wav", Sound.class);
+        manager.load("/data/sfx/Jump3.wav", Sound.class);
+        manager.load("/data/sfx/Hit_Hurt.wav", Sound.class);
 
         jump1 = manager.get("data/sfx/Jump.wav", Sound.class);
         jump2 = manager.get("data/sfx/Jump2.wav", Sound.class);
         jump3 = manager.get("data/sfx/Jump3.wav", Sound.class);
         hurt = manager.get("data/sfx/Hit_Hurt.wav", Sound.class);
 
-    }
+    } //end load
 
-    public void dispose() {
+    public static void dispose() {
         jump1.dispose();
         jump2.dispose();
         jump3.dispose();
         hurt.dispose();
 
         manager.dispose();
-    }
+    } //end dispose
 }

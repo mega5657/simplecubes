@@ -21,8 +21,6 @@ public class ShapeFun extends Game {
     public InputHandler input;
     boolean debug = true;
     AssetLoader manager;
-    
-    
 
     @Override
     public void create() {
@@ -33,7 +31,9 @@ public class ShapeFun extends Game {
         gameScreen = new GameScreen(this);
         setScreen(menuScreen);
         input = new InputHandler();
-                Gdx.input.setInputProcessor(input);
+        Gdx.input.setInputProcessor(input);
+        
+        AssetLoader.load();
 
     }
 
