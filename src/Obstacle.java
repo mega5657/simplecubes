@@ -13,21 +13,24 @@ import com.badlogic.gdx.math.Vector2;
 public class Obstacle {
 
     Vector2 position = new Vector2(0, 0);
+    Vector2 initPosition = new Vector2(0, 0);
     Rectangle bounds = new Rectangle(0, 0, 20, 30);
-    float velocity = 0;
+    Vector2 velocity = new Vector2(0, 0);
     float deltaTime = 0;
 
     public Obstacle(int positionX, int positionY, int width, int height, float speed) {
-        velocity = speed;
+        velocity.x = speed;
         position.x = positionX;
         position.y = positionY;
+        initPosition.x = positionX;
+        initPosition.y = positionY;
         bounds.x = position.x;
         bounds.y = position.y;
 
     }
 
     public void update(float deltaTime) {
-        position.x -= velocity * deltaTime;
+        position.x -= velocity.x * deltaTime;
         bounds.x = position.x;
 
 
@@ -40,6 +43,14 @@ public class Obstacle {
         bounds.y = y;
         bounds.width = width;
         bounds.height = height;
-        velocity = speed;
+        velocity.x = speed;
+    }
+
+    public void reset() {
+        position.x = initPosition.x;
+        position.y = initPosition.y;
+        velocity.x = 0;
+        velocity.y = 0;
+        
     }
 }

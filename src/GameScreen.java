@@ -99,10 +99,11 @@ public class GameScreen implements Screen {
 
 
             if (game.debug == true) {
+                font.drawWrapped(batcher, "Velocity: " + squareBoy.velocity + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 25, 200);
             }
             batcher.end();
             update(f);
-        }
+        } //end if statement Game RUNNING
 
         if (GameState == GAME_OVER) {
             timer += f;
@@ -114,15 +115,15 @@ public class GameScreen implements Screen {
             batcher.begin();
             font.drawWrapped(batcher, "Game Over. Score = " + score + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 50, 100);
             batcher.end();
-            System.out.println(timer);
+//            System.out.println(timer);
             if (timer > 2) {
                 timer = 0;
                 GameState = RUNNING;
                 game.setScreen(game.menuScreen);
                 reset();
-            }
-        }
-    }
+            }//end timer if statement
+        } //end if GAME OVER
+    } //end render method
 
 //game logic is here
     private void update(float deltaTime) {
@@ -135,46 +136,39 @@ public class GameScreen implements Screen {
         if (checkCollision()) {
             AssetLoader.jump1.play();
             GameState = GAME_OVER;
-            
+
         }
-    }
+    } //end update
 
     //TO DO handle checks for the array of obstacles
     private boolean checkCollision() {
-        if (overlapRectangles(obst[0].bounds, squareBoy.bounds)) {
+        if (CollisionTester.overlapRectangles(obst[0].bounds, squareBoy.bounds)) {
             return true;
         }
 
         return false;
     }
 
-    private boolean overlapRectangles(Rectangle r1, Rectangle r2) {
-        if (r1.x < r2.x + r2.width && r1.x + r1.width > r2.x && r1.y < r2.y + r2.height && r1.y + r1.height > r2.y) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     private void reset() {
-       
-    }
+        squareBoy.reset();
+        obst[0].reset();
+    } //end reset
 
     @Override
     public void resize(int i, int i1) {
-    }
+    } //end resize
 
     @Override
     public void show() {
-    }
+    } //end show
 
     @Override
     public void hide() {
-    }
+    }// end hide
 
     @Override
     public void pause() {
-    }
+    } //end pause
 
     @Override
     public void resume() {

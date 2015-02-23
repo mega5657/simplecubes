@@ -16,8 +16,9 @@ public class Protagonist {
     ShapeFun game;
     Rectangle bounds;
     float jumpValue = 10;
+    //velocity in the y direction
     float velocity = 0;
-    int maxVelocity = 12;
+    int maxVelocity = 10;
     Vector2 acceleration;
     Vector2 friction_gravity;
     Vector2 position;
@@ -41,22 +42,23 @@ public class Protagonist {
             System.out.println("Jump aru");
         } //end keyPressed = keys.space
         calculatePhysics(deltaTime);
-        System.out.println("velocity = " + velocity + "");
+//        System.out.println("velocity = " + velocity + "");
         bounds.x = position.x;
         bounds.y = position.y;
 
     }//end update
-    
 
     public void jump() {
+
+        //only jumps if velocity is 0 
         if (velocity == 0) {
             acceleration.y = jumpValue;
         }
 
-
+        //if velocity is greater than current maxVelocity then fix that 
         if (velocity < 10) {
             velocity = 10;
-        }
+        } //end if statement
 
     } //end jump
 
@@ -82,10 +84,17 @@ public class Protagonist {
 
     } //end calculate physics
 
-    private void setZeros() {
+    public void setZeros() {
         acceleration.y = 0;
         velocity = 0;
-    } //end setZeros
+        position.y = groundLevel;
+
+    } //end reset
+
+    public void reset() {
+        acceleration.y = 0;
+        velocity = 0;
+    }//end reset
 
     public ShapeFun getGame() {
         return game;
