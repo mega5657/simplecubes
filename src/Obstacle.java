@@ -44,6 +44,8 @@ public class Obstacle {
         bounds.width = width;
         bounds.height = height;
         velocity.x = speed;
+               initPosition.x = x;
+        initPosition.y = y;
     }
 
     public void reset() {
