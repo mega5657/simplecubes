@@ -44,15 +44,14 @@ public class Obstacle {
         bounds.width = width;
         bounds.height = height;
         velocity.x = speed;
-               initPosition.x = x;
+        initPosition.x = x;
         initPosition.y = y;
     }
 
     public void reset() {
         position.x = initPosition.x;
         position.y = initPosition.y;
-        velocity.x = 0;
         velocity.y = 0;
-        
+
     }
 }

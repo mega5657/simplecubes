@@ -70,6 +70,7 @@ public class GameScreen implements Screen {
     public void render(float f) {
         if (GameState == RUNNING) {
             timer += f;
+            update(f);
             if (timer >= .1) {
                 score++;
                 timer = 0;
@@ -101,8 +102,7 @@ public class GameScreen implements Screen {
                 font.drawWrapped(batcher, "Velocity: " + squareBoy.velocity + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 25, 200);
             }
             batcher.end();
-            update(f);
-        } //end if statement Game RUNNING
+        } //end of if statement Game RUNNING
 
         if (GameState == GAME_OVER) {
             timer += f;
@@ -128,14 +128,14 @@ public class GameScreen implements Screen {
     private void update(float deltaTime) {
         squareBoy.update(deltaTime);
         obst[0].update(deltaTime);
-        if (obst[0].position.x < -700) {
-            obst[0].position.x = 500;
+        if (obst[0].position.x < -100) {
+            obst[0].position.x = 750;
         }
 
         if (checkCollision()) {
-            AssetLoader.jump1.play();
+            AssetLoader.hurt.play();
             GameState = GAME_OVER;
-
+            score = 0;
         }
     } //end update
 

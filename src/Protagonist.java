@@ -39,7 +39,8 @@ public class Protagonist {
     public void update(float deltaTime) {
         if (game.input.keyPressed == Keys.SPACE && velocity == 0) {
             jump();
-            System.out.println("Jump aru");
+           // System.out.println("Jump aru");
+            AssetLoader.jump1.play();
         } //end keyPressed = keys.space
         calculatePhysics(deltaTime);
 //        System.out.println("velocity = " + velocity + "");

@@ -1,5 +1,6 @@
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
@@ -85,7 +86,7 @@ public class MainMenuScreen implements Screen {
     }
 
     private void update() {
-        if (game.input.getTouchPosX() > 0) {
+        if (game.input.getTouchPosX() > 0 || game.input.keyPressed == Input.Keys.SPACE) {
             if (CollisionTester.pointInRectangle(startBounds, game.input.touchPos)) {
                 game.setScreen(game.gameScreen);
             }
