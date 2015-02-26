@@ -30,9 +30,11 @@ public class Obstacle {
     }
 
     public void update(float deltaTime) {
-        position.x -= velocity.x * deltaTime;
+        int x = 300;
+        position.x -= x*deltaTime;
+        //position.x = Math.round(position.x);
+        System.out.println(position.x);
         bounds.x = position.x;
-
 
     }
 
