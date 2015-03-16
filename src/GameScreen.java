@@ -35,11 +35,14 @@ public class GameScreen implements Screen {
     float timer = 0;
     int difficulty = 0;
     int displacement = 0;
+    int count =0;
+    int increment = 0;
     int genX = 0;
     int genY = 0;
     int genWidth = 0;
     int genHeight = 0;
     int genSpeed = 0;
+    boolean GODMODE = true;
 
     public GameScreen(ShapeFun game) {
         r = new Random();
@@ -62,7 +65,6 @@ public class GameScreen implements Screen {
         shape.setColor(Color.BLACK);
         obst[0].setParameters(400, groundLevel, 50, 60, 300);
 
-    
     }
 
     @Override
@@ -78,6 +80,7 @@ public class GameScreen implements Screen {
             Gdx.gl.glClearColor(1, 1, 1, 1);//set Background Color White
             Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
             cam.update();
+
             batcher.setProjectionMatrix(cam.combined);
 
             batcher.begin();
@@ -85,20 +88,25 @@ public class GameScreen implements Screen {
 
             shape.begin(ShapeRenderer.ShapeType.Filled);
             shape.rect(squareBoy.position.x, squareBoy.position.y, 40, 50);
+
+            for (int i = 0; i < obst.length; i++) {
+                shape.rect(obst[i].position.x, obst[i].position.y, obst[i].bounds.width, obst[i].bounds.height);
+            }
+
             shape.end();
 
-            shape.begin(ShapeRenderer.ShapeType.Filled);
-
-            shape.rect(obst[0].position.x, obst[0].position.y, obst[0].bounds.width, obst[0].bounds.height);
-
-            shape.end();
-
+//            shape.begin(ShapeRenderer.ShapeType.Filled);
+//
+//            shape.rect(obst[0].position.x, obst[0].position.y, obst[0].bounds.width, obst[0].bounds.height);
+//
+//            shape.end();
             batcher.begin();
             font.drawWrapped(batcher, "Score: " + score + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 50, 100);
 
-
             if (game.debug == true) {
                 font.drawWrapped(batcher, "Velocity: " + squareBoy.velocity + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 25, 200);
+                font.drawWrapped(batcher, "DeltaTime: " + f + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 70, 200);
+
             }
             batcher.end();
         } //end of if statement Game RUNNING
@@ -131,7 +139,7 @@ public class GameScreen implements Screen {
             obst[0].position.x = 750;
         }
 
-        if (checkCollision()) {
+        if (checkCollision() && !GODMODE) {
             AssetLoader.hurt.play();
             GameState = GAME_OVER;
             score = 0;
@@ -145,6 +153,21 @@ public class GameScreen implements Screen {
         }
 
         return false;
+    }
+
+    private void updateAlgorithim() {
+        for (int i = 0; i < obst.length; i++) {
+//                shape.rect(obst[i].position.x, obst[i].position.y, obst[i].bounds.width, obst[i].bounds.height);
+            if (obst[i].position.x < -300) {
+                
+                
+            }
+        }
+        
+        //to do max position 
+        //the first object that cross the boundary is added past the max position
+        //for each consequtive object add a random distance between objects that are past -300
+
     }
 
     private void reset() {
