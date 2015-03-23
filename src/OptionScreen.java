@@ -12,7 +12,7 @@ import com.badlogic.gdx.Screen;
  *
  * @author JTTorres15
  */
-public class GameOverScreen implements Screen{
+public class OptionScreen implements Screen {
 
     @Override
     public void render(float f) {

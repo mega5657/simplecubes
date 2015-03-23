@@ -1,4 +1,6 @@
 
+
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -25,7 +27,10 @@ public class MainMenuScreen implements Screen {
     OrthographicCamera cam;
     SpriteBatch batcher;
     BitmapFont font;
+    BitmapFont smallerFont;
     Rectangle startBounds;
+    Rectangle upgradeBounds;
+    Rectangle optionBounds;
 
     public MainMenuScreen(ShapeFun game) {
         this.game = game;
@@ -33,11 +38,13 @@ public class MainMenuScreen implements Screen {
         cam = new OrthographicCamera(600, 400);
         cam.position.set(600 / 2, 400 / 2, 0);
         font = new BitmapFont();
+        smallerFont = new BitmapFont();
         font.setColor(Color.BLACK);
         font.setScale(3);
         shape = new ShapeRenderer();
         shape.setColor(Color.GREEN);
         startBounds = new Rectangle(145, 205, 315, 60);
+        upgradeBounds = new Rectangle(145, 100, 250, 60);
 
     }
 
@@ -51,6 +58,7 @@ public class MainMenuScreen implements Screen {
         batcher.begin();
         batcher.enableBlending();
         font.draw(batcher, "Simple Runner", game.DEVICE_WIDTH / 2 - 145, game.DEVICE_HEIGHT / 2 + 59);
+
         batcher.end();
 
         shape.begin(ShapeRenderer.ShapeType.Line);
@@ -86,10 +94,23 @@ public class MainMenuScreen implements Screen {
     }
 
     private void update() {
-        if (game.input.getTouchPosX() > 0 || game.input.keyPressed == Input.Keys.SPACE) {
-            if (CollisionTester.pointInRectangle(startBounds, game.input.touchPos)) {
+        if (game.input.getTouchPosX() > 0) {
+            if (CollisionTester.pointInRectangle(startBounds, game.input.touchPos) || game.input.keyPressed == Input.Keys.SPACE) {
                 game.setScreen(game.gameScreen);
-            }
-        }
+            } //end if startbounds
+        } //end if game.input.getTouchPosX
+
+        if (game.input.getTouchPosX() > 0) {
+            if (CollisionTester.pointInRectangle(upgradeBounds, game.input.touchPos)) {
+                game.setScreen(game.upgradeScreen);
+            } //end upgradeBounds
+        } //end if game.input.getTouchPosX
+
+        if (game.input.getTouchPosX() > 0) {
+            if (CollisionTester.pointInRectangle(optionBounds, game.input.touchPos)) {
+                game.setScreen(game.optionScreen);
+            } //end optionBounds
+        } //end if game.input.getTouchPosX
+
     }
 }

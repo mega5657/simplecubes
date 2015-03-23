@@ -15,6 +15,9 @@ public class ShapeFun extends Game {
 
     MainMenuScreen menuScreen;
     GameScreen gameScreen;
+    UpgradeScreen upgradeScreen;
+    OptionScreen optionScreen;
+    
     FPSLogger fps;
     int DEVICE_WIDTH;
     int DEVICE_HEIGHT;
