@@ -1,7 +1,6 @@
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.assets.loaders.resolvers.ExternalFileHandleResolver;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 
 /*
@@ -16,6 +15,7 @@ public class AssetLoader {
 
     static AssetManager manager;
     static Sound jump1, jump2, jump3, hurt;
+    static Music song1; 
 
     public AssetLoader() {
     }
@@ -27,6 +27,7 @@ public class AssetLoader {
         manager.load("data/sfx/Jump2.wav", Sound.class);
         manager.load("data/sfx/Jump3.wav", Sound.class);
         manager.load("data/sfx/Hit_Hurt.wav", Sound.class);
+        manager.load("data/sfx/song1.wav", Music.class);
 
 
         manager.update();
@@ -35,8 +36,8 @@ public class AssetLoader {
         jump2 = manager.get("data/sfx/Jump2.wav", Sound.class);
         jump3 = manager.get("data/sfx/Jump3.wav", Sound.class);
         hurt = manager.get("data/sfx/Hit_Hurt.wav", Sound.class);
-
-
+        song1 = manager.get("data/sfx/song1.wav", Music.class);
+        song1.setLooping(true);
 
 
     } //end load
@@ -46,6 +47,7 @@ public class AssetLoader {
         jump2.dispose();
         jump3.dispose();
         hurt.dispose();
+        song1.dispose();
 
         manager.dispose();
     } //end dispose

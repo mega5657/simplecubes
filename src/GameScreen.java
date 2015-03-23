@@ -42,7 +42,7 @@ public class GameScreen implements Screen {
     int genWidth = 0;
     int genHeight = 0;
     int genSpeed = 0;
-    boolean GODMODE = true;
+    boolean GODMODE = false;
 
     public GameScreen(ShapeFun game) {
         r = new Random();
@@ -142,7 +142,6 @@ public class GameScreen implements Screen {
         if (checkCollision() && !GODMODE) {
             AssetLoader.hurt.play();
             GameState = GAME_OVER;
-            score = 0;
         }
     } //end update
 
@@ -173,6 +172,7 @@ public class GameScreen implements Screen {
     private void reset() {
         squareBoy.reset();
         obst[0].reset();
+        score = 0;
     } //end reset
 
     @Override
@@ -181,10 +181,13 @@ public class GameScreen implements Screen {
 
     @Override
     public void show() {
+        AssetLoader.song1.play();
+        
     } //end show
 
     @Override
     public void hide() {
+        AssetLoader.song1.pause();
     }// end hide
 
     @Override
