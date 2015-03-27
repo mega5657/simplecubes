@@ -1,6 +1,4 @@
 
-
-
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -45,6 +43,7 @@ public class MainMenuScreen implements Screen {
         shape.setColor(Color.GREEN);
         startBounds = new Rectangle(145, 205, 315, 60);
         upgradeBounds = new Rectangle(145, 100, 250, 60);
+        optionBounds = new Rectangle(0, 0, 0, 0);
 
     }
 
