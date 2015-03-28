@@ -16,6 +16,7 @@ public class Obstacle {
     Vector2 initPosition = new Vector2(0, 0);
     Rectangle bounds = new Rectangle(0, 0, 20, 30);
     Vector2 velocity = new Vector2(0, 0);
+    boolean passedPlayer = false;
     float deltaTime = 0;
 
     public Obstacle(int positionX, int positionY, int width, int height, float speed) {
@@ -31,7 +32,7 @@ public class Obstacle {
 
     public void update(float deltaTime) {
         int x = 300;
-        position.x -= x*deltaTime;
+        position.x -= x * deltaTime;
         //position.x = Math.round(position.x);
         System.out.println(position.x);
         bounds.x = position.x;

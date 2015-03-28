@@ -28,7 +28,7 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyUp(int i) {
-keyPressed = -1234;
+        keyPressed = -1234;
         return false;
     }
 
@@ -39,7 +39,7 @@ keyPressed = -1234;
 
     @Override
     public boolean touchDown(int i, int i1, int i2, int i3) {
-        System.out.println("X, Y: "+i+", "+ (Gdx.graphics.getHeight() - i1) +" ");
+        System.out.println("X, Y: " + i + ", " + (Gdx.graphics.getHeight() - i1) + " ");
         return false;
     }
 
@@ -62,7 +62,7 @@ keyPressed = -1234;
 
     @Override
     public boolean scrolled(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     public float getTouchPosX() {
