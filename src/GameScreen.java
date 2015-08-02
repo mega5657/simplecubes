@@ -57,7 +57,6 @@ public class GameScreen implements Screen {
         squareBoy = new Protagonist(game, groundLevel);
         obst = new Obstacle[5];
 
-
         for (int i = 0; i < obst.length - 1; i++) {
             obst[i] = new Obstacle(700, groundLevel, 50, 70, 25);
             obst[i].position.x += spaceAdded;
@@ -94,8 +93,9 @@ public class GameScreen implements Screen {
 
             shape.begin(ShapeRenderer.ShapeType.Filled);
             shape.rect(squareBoy.position.x, squareBoy.position.y, 40, 50);
+            shape.rect(0, squareBoy.getGroundLevel() - 7, game.DEVICE_WIDTH, 10);
 
-            for (int i = 0; i < obst.length; i++) {
+            for (int i = 0; i < obst.length - 1; i++) {
                 shape.rect(obst[i].position.x, obst[i].position.y, obst[i].bounds.width, obst[i].bounds.height);
             }
 
@@ -107,13 +107,15 @@ public class GameScreen implements Screen {
 //
 //            shape.end();
             batcher.begin();
-            font.drawWrapped(batcher, "Score: " + score + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 50, 100);
+            font.draw(batcher, "Score: " + score + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 50, 100, 90, true);
 
             if (game.debug == true) {
-                font.drawWrapped(batcher, "Velocity: " + squareBoy.velocity + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 25, 200);
-                font.drawWrapped(batcher, "DeltaTime: " + f + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 70, 200);
+                font.draw(batcher, "Velocity: " + squareBoy.velocity + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 25, 200, 90, true);
+                font.draw(batcher, "DeltaTime: " + f + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 70, 200, 90, true);
 
             }
+
+            font.draw(batcher, "Exit", 15, game.DEVICE_HEIGHT - 15);
             batcher.end();
         } //end of if statement Game RUNNING
 
@@ -125,7 +127,7 @@ public class GameScreen implements Screen {
             batcher.setProjectionMatrix(cam.combined);
 
             batcher.begin();
-            font.drawWrapped(batcher, "Game Over. Score = " + score + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 50, 100);
+            font.draw(batcher, "Game Over. Score = " + score + "", game.DEVICE_WIDTH - 200, game.DEVICE_HEIGHT - 50, 100, 90, true);
             batcher.end();
 //            System.out.println(timer);
             if (timer > 2) {
@@ -170,7 +172,7 @@ public class GameScreen implements Screen {
         //to do max position 
         //the first object that cross the boundary is added past the max position
         //for each consequtive object add a random distance between objects that are past -300
-        for (int i = 0; i < obst.length; i++) {
+        for (int i = 0; i < obst.length - 1; i++) {
 //                shape.rect(obst[i].position.x, obst[i].position.y, obst[i].bounds.width, obst[i].bounds.height);
             if (obst[i].position.x < -150) {
                 obst[i].passedPlayer = true;
@@ -207,6 +209,7 @@ public class GameScreen implements Screen {
     @Override
     public void hide() {
         AssetLoader.song1.pause();
+        game.saveSystem.save();
     }// end hide
 
     @Override

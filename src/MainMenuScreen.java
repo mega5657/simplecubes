@@ -38,7 +38,6 @@ public class MainMenuScreen implements Screen {
         font = new BitmapFont();
         smallerFont = new BitmapFont();
         font.setColor(Color.BLACK);
-        font.setScale(3);
         shape = new ShapeRenderer();
         shape.setColor(Color.GREEN);
         startBounds = new Rectangle(145, 205, 315, 60);
@@ -56,7 +55,7 @@ public class MainMenuScreen implements Screen {
 
         batcher.begin();
         batcher.enableBlending();
-        font.draw(batcher, "Simple Runner", game.DEVICE_WIDTH / 2 - 145, game.DEVICE_HEIGHT / 2 + 59);
+        font.draw(batcher, "Simple Runner", game.DEVICE_WIDTH / 2 - 145, game.DEVICE_HEIGHT / 2 + 59,100,50,1000,1000,true);
 
         batcher.end();
 
